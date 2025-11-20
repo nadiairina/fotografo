@@ -136,7 +136,7 @@ section {
     text-align: center;
     color: var(--color-light-text);
     background: var(--color-dark-bg); 
-    position: relative; /* Adicionado para que o overlay funcione */
+    position: relative; 
 }
 
 /* NOVO: Estilo para Overlay do Hero (em preparação para uma imagem de fundo) */
@@ -146,12 +146,12 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Escurece a imagem de fundo */
+    background-color: rgba(0, 0, 0, 0.4); 
     z-index: 1;
 }
 
 .hero-content {
-    z-index: 2; /* Garante que o conteúdo (texto/botão) fique por cima do overlay */
+    z-index: 2; 
 }
 
 .hero-content h1 {
@@ -222,8 +222,8 @@ section {
     align-items: center;
     margin: 0 auto 15px auto;
     border-radius: 50%;
-    background: rgba(0, 255, 255, 0.1); /* Fundo ciano claro */
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); /* Brilho sutil */
+    background: rgba(0, 255, 255, 0.1); 
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); 
 }
 
 /* Shop Section (Loja) */
@@ -264,11 +264,11 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0; /* Começa invisível */
+    opacity: 0; 
     transition: opacity 0.3s ease;
 }
 .product-card:hover .product-overlay {
-    opacity: 1; /* Torna-se visível no hover do cartão */
+    opacity: 1; 
 }
 .btn-view {
     background: var(--color-primary);
