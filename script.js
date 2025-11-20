@@ -65,11 +65,12 @@ const contactForm = document.getElementById('contactForm');
 contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
-    // Get form data
+    // Get form data (Adicionado 'event-type' e a variável de detalhes 'message' foi corrigida)
     const formData = new FormData(contactForm);
     const name = formData.get('name');
     const email = formData.get('email');
-    const message = formData.get('message');
+    const eventType = formData.get('event-type'); // Novo campo
+    const details = formData.get('message');
     
     // Show success toast
     showToast('Mensagem enviada! Entrarei em contato em breve.');
@@ -78,7 +79,12 @@ contactForm.addEventListener('submit', function(e) {
     contactForm.reset();
     
     // In a real application, you would send this data to a server
-    console.log('Form submitted:', { name, email, message });
+    console.log('Form submitted:', { name, email, eventType, details });
+    
+    // *******************************************************************
+    // SUGGESTÃO: Usar a Fetch API para enviar dados para um endpoint real
+    // Ex: fetch('https://seu-endpoint-de-formulário.com/submit', { ... })
+    // *******************************************************************
 });
 
 // Toast notification function
@@ -144,6 +150,14 @@ document.addEventListener('DOMContentLoaded', function() {
         hero.style.opacity = '1';
         hero.style.transform = 'translateY(0)';
     }
+
+    // **********************************************
+    // NOVO: Atualiza o ano no footer dinamicamente
+    // **********************************************
+    const currentYear = document.getElementById('currentYear');
+    if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+    }
 });
 
 // Lazy loading for images (optional enhancement)
@@ -169,12 +183,12 @@ let cart = [];
 function addToCart(productId) {
     // Product data
     const products = {
-        'preset-vintage': { name: 'Vintage Film Presets', price: 29.99, category: 'Preset' },
-        'preset-moody': { name: 'Moody Tones Presets', price: 34.99, category: 'Preset' },
-        'pack-wedding': { name: 'Wedding Photography Pack', price: 79.99, category: 'Pack Completo' },
-        'wallpaper-nature': { name: 'Nature Collection', price: 19.99, category: 'Wallpapers' },
-        'wallpaper-urban': { name: 'Urban Landscapes', price: 14.99, category: 'Wallpapers' },
-        'pack-complete': { name: 'Complete Collection', price: 149.99, category: 'Pack Completo' }
+        'edit-vintage': { name: 'Vintage House Edits', price: 29.99, category: 'Edits' },
+        'sample-moody': { name: 'Deep Tech Sample Pack', price: 34.99, category: 'Samples' },
+        'course-masterclass': { name: 'Masterclass: Mixagem Avançada', price: 79.99, category: 'Curso' },
+        'preset-serum': { name: 'Serum Presets Collection', price: 19.99, category: 'Presets' }
+        // Os produtos da descrição original foram mapeados para os IDs do HTML
+        // Se houver mais produtos, adicione-os aqui
     };
 
     const product = products[productId];
@@ -194,42 +208,31 @@ function addToCart(productId) {
 function viewProduct(productId) {
     // Product descriptions
     const productDetails = {
-        'preset-vintage': {
-            name: 'Vintage Film Presets',
+        'edit-vintage': {
+            name: 'Vintage House Edits',
             price: '€29,99',
-            description: 'Pack com 15 presets profissionais que recriam a estética clássica do filme analógico. Tons quentes, grão autêntico e cores nostálgicas.',
-            features: ['15 presets Lightroom/Camera Raw', 'Compatível com JPG e RAW', 'Instruções de instalação', 'Antes/Depois de exemplo']
+            description: 'Pack com 15 remixes exclusivos, prontos para a pista. Trazem a estética clássica do House de volta.',
+            features: ['15 Edits prontas para DJ', 'Qualidade de Estúdio (WAV)', 'Compatível com qualquer software/player', 'Licença de Uso Pessoal/DJ']
         },
-        'preset-moody': {
-            name: 'Moody Tones Presets',
+        'sample-moody': {
+            name: 'Deep Tech Sample Pack',
             price: '€34,99',
-            description: 'Pack com 20 presets para criar atmosferas dramáticas e cinematográficas. Perfeito para retratos e fotografia editorial.',
-            features: ['20 presets Lightroom/Camera Raw', 'Tons escuros e dramáticos', 'Otimizado para retratos', 'Guia de uso incluído']
+            description: 'Pack com 200 samples e loops para produções Deep Tech. Inclui Kicks, Hats, Basslines, e Percussão.',
+            features: ['200 Samples e Loops', 'Ficheiros WAV 24-bit', '10 Construction Kits', '100% Royalty Free']
         },
-        'pack-wedding': {
-            name: 'Wedding Photography Pack',
+        'course-masterclass': {
+            name: 'Masterclass: Mixagem Avançada',
             price: '€79,99',
-            description: 'Pacote completo para fotografia de casamento. Inclui 30 presets + guia profissional de 50 páginas com dicas e técnicas.',
-            features: ['30 presets especializados', 'Guia PDF de 50 páginas', 'Templates para poses', 'Checklist de equipamento']
+            description: 'Curso completo de produção e DJing profissional, passo a passo, focado em técnicas avançadas de mixagem de género.',
+            features: ['Mais de 10 horas de vídeo', 'Acesso vitalício', 'Certificado de Conclusão', 'Suporte Exclusivo']
         },
-        'wallpaper-nature': {
-            name: 'Nature Collection',
+        'preset-serum': {
+            name: 'Serum Presets Collection',
             price: '€19,99',
-            description: 'Coleção de 50 wallpapers de natureza em resolução 4K. Paisagens deslumbrantes para seu desktop e mobile.',
-            features: ['50 imagens em 4K (3840x2160)', 'Versões mobile (1080x1920)', 'Download imediato', 'Uso pessoal e comercial']
-        },
-        'wallpaper-urban': {
-            name: 'Urban Landscapes',
-            price: '€14,99',
-            description: 'Coleção de 30 wallpapers de paisagens urbanas em 4K. Arquitetura moderna e visuais urbanos impressionantes.',
-            features: ['30 imagens em 4K', 'Versões mobile incluídas', 'Download instantâneo', 'Licença comercial']
-        },
-        'pack-complete': {
-            name: 'Complete Collection',
-            price: '€149,99',
-            description: 'O pacote definitivo! Todos os presets + 100 wallpapers + Guias completos de fotografia. Economize 40%!',
-            features: ['Todos os 65 presets', '100 wallpapers 4K', '3 guias profissionais em PDF', 'Atualizações gratuitas por 1 ano', 'Suporte prioritário']
+            description: 'Pacote de 50 presets de baixo e synth para o Serum. Sons modernos e prontos para a produção de eletrónica.',
+            features: ['50 Presets para Serum V1.35+', 'Focado em Bass e Leads', 'Sons prontos para House e Techno', 'Instruções de Instalação']
         }
+        // Se houver mais produtos, adicione os detalhes aqui
     };
 
     const details = productDetails[productId];
