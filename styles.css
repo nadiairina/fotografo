@@ -85,8 +85,6 @@ a {
     color: var(--color-light-text);
     transform: translateY(-1px);
 }
-/* Estilos Mobile Menu (Não incluídos, assumindo que já estão noutro ficheiro/parte) */
-
 
 .accent {
     color: var(--color-primary); 
@@ -143,7 +141,7 @@ section {
     position: relative; 
 }
 
-/* NOVO: Estilo para Overlay do Hero (em preparação para uma imagem de fundo) */
+/* Estilo para Overlay do Hero */
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -214,7 +212,7 @@ section {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* NOVO: Estilo para ícones de Serviço (torna os emojis mais profissionais) */
+/* Estilo para ícones de Serviço */
 .service-icon {
     font-size: 2.0rem;
     margin-bottom: 15px;
@@ -363,7 +361,7 @@ footer {
     border-top: 1px solid #E5E7EB;
 }
 
-/* Media Queries */
+/* Media Queries (Gerais) */
 @media (max-width: 992px) {
     .contact-grid, .about-grid {
         grid-template-columns: 1fr;
@@ -382,7 +380,7 @@ footer {
 }
 
 /* ========================================================================
- * 4. Utilidades & Toast (Melhoria: Novo componente)
+ * 4. Utilidades & Toast
  * ======================================================================== */
 .toast {
     position: fixed;
@@ -414,4 +412,76 @@ footer {
 }
 .toast.error strong {
     color: var(--color-error);
+}
+
+/* ========================================================================
+ * 5. Estilos Específicos do Menu Móvel (CORRIGIDO)
+ * ======================================================================== */
+/* Esconder o botão de menu móvel em desktops */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Esconder o menu móvel por predefinição */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Coloca-o abaixo da navbar */
+    left: 0;
+    width: 100%;
+    background: var(--color-dark-bg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    text-align: center;
+    transform: translateY(-100%); /* Oculta acima */
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Estado Ativo/Aberto (Controlado pelo JavaScript) */
+.mobile-menu.active {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(0); /* Faz deslizar para baixo */
+    opacity: 1;
+}
+
+.mobile-menu a, .mobile-menu button {
+    color: var(--color-light-text);
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.mobile-menu a:hover, .mobile-menu button:hover {
+    background-color: rgba(0, 255, 255, 0.1); 
+    color: var(--color-primary);
+}
+
+/* Esconder o menu de desktop em mobile (<= 992px) */
+@media (max-width: 992px) {
+    .nav-links {
+        display: none; /* Esconde links de desktop */
+    }
+    .mobile-menu-btn {
+        display: block; /* Mostra o botão hambúrguer */
+    }
+}
+
+/* Estilos para o ícone do botão móvel */
+.mobile-menu-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--color-primary);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
 }
