@@ -67,7 +67,7 @@ a {
 }
 .nav-links a:hover {
     color: var(--color-primary);
-    text-shadow: 0 0 5px var(--color-primary); /* Melhoria: Efeito Neon Subtil */
+    text-shadow: 0 0 5px var(--color-primary); 
 }
 .btn-contact {
     background: var(--color-primary);
@@ -78,7 +78,7 @@ a {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2); /* Melhoria: Efeito Glow */
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2); 
 }
 .btn-contact:hover {
     background-color: var(--color-secondary);
@@ -101,7 +101,7 @@ a {
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2); /* Melhoria: Efeito Glow */
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2); 
 }
 
 .btn-primary:hover {
@@ -175,6 +175,7 @@ section {
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
 }
 .gallery-item img {
     width: 100%;
@@ -186,6 +187,11 @@ section {
 .gallery-item:hover img {
     transform: scale(1.05);
 }
+/* MELHORIA UI: EFEITO NEON NA GALERIA */
+.gallery-item:hover { 
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); /* Efeito Neon */
+}
+
 .gallery-item.tall { grid-row: span 2; }
 .gallery-item.wide { grid-column: span 2; }
 
@@ -196,7 +202,29 @@ section {
     gap: 60px;
     align-items: center;
 }
-.stat-number { color: var(--color-primary); }
+/* MELHORIA UI: LAYOUT DE ESTATÍSTICAS */
+.stats {
+    display: flex; 
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #E5E7EB; 
+    gap: 20px;
+}
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+.stat-number { 
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--color-primary);
+}
+.stat-label {
+    color: var(--color-gray-text);
+    font-weight: 400;
+}
 
 /* Services Section */
 .services-grid {
@@ -210,6 +238,12 @@ section {
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    /* MELHORIA UI: EFEITO HOVER NO CARD DE SERVIÇOS */
+    transition: all 0.3s ease; 
+}
+.service-card:hover {
+    transform: translateY(-8px); /* Elevação suave */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 255, 255, 0.2); /* Sombra mais destacada + Neon */
 }
 
 /* Estilo para ícones de Serviço */
@@ -354,6 +388,11 @@ section {
 .contact-form textarea {
     resize: vertical;
 }
+/* MELHORIA UX/UI: BOTÃO DO FORMULÁRIO 100% WIDTH */
+.contact-form button.btn-primary {
+    width: 100%; 
+}
+
 
 /* Footer (Estilo Limpo) */
 footer {
@@ -376,6 +415,11 @@ footer {
     }
     .hero-content h1 {
         font-size: 2.5rem;
+    }
+    /* MELHORIA UI: EMPILHAR STATS EM MOBILE */
+    .stats {
+        flex-direction: column;
+        gap: 15px;
     }
 }
 
@@ -415,7 +459,7 @@ footer {
 }
 
 /* ========================================================================
- * 5. Estilos Específicos do Menu Móvel (CORRIGIDO)
+ * 5. Estilos Específicos do Menu Móvel
  * ======================================================================== */
 /* Esconder o botão de menu móvel em desktops */
 .mobile-menu-btn {
