@@ -48,7 +48,7 @@ a {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 15px rgba(0, 255, 255, 0.1); 
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* ADIÇÃO */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
 }
 
 /* NOVO: Estilo para Navbar Scrolled (Efeito Subtil) */
@@ -146,7 +146,7 @@ section {
     justify-content: center;
     text-align: center;
     color: var(--color-light-text);
-    background: var(--color-dark-bg); 
+    background: var(--color-dark-bg); /* Mantido, mas sobreposto pelo estilo inline da imagem */
     position: relative; 
 }
 
@@ -157,7 +157,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); 
+    background-color: rgba(0, 0, 0, 0.6); /* Aumentado para melhor contraste com a imagem de fundo */
     z-index: 1;
 }
 
@@ -229,6 +229,23 @@ section {
     gap: 60px;
     align-items: center;
 }
+
+/* NOVO: Estilo para o Título H2 da secção Sobre */
+.about-content h2 {
+    font-size: 2.2rem; /* Tamanho maior para o título */
+    font-weight: 700;
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+    color: var(--color-dark-bg);
+}
+
+/* NOVO: Estilo para o texto do parágrafo da secção Sobre (aumenta o tamanho) */
+.about-content .about-text {
+    font-size: 1.1rem; /* Aumenta o tamanho do texto */
+    line-height: 1.8; /* Melhora a legibilidade */
+    margin-bottom: 30px; /* Espaçamento abaixo do parágrafo */
+    color: #333; /* Uma cor um pouco mais escura para o texto */
+}
+
 .stats {
     display: flex;
     justify-content: space-between;
@@ -454,6 +471,14 @@ footer {
     }
     .hero-content h1 {
         font-size: 2.5rem;
+    }
+    /* NOVO: Reduz o tamanho do título "Sobre Nós" em mobile */
+    .about-content h2 {
+        font-size: 1.8rem;
+    }
+    /* NOVO: Reduz o tamanho do texto da secção "Sobre" em mobile */
+    .about-content .about-text {
+        font-size: 1rem;
     }
 }
 
