@@ -10,6 +10,7 @@
     --color-dark-bg: #111827; /* Fundo Escuro (Quase Preto) */
     --color-light-text: #F3F4F6; /* Texto Claro */
     --color-gray-text: #9CA3AF; /* Texto Cinzento */
+    --color-error: #FF3333; /* Vermelho para Erros */
 }
 
 * {
@@ -66,6 +67,7 @@ a {
 }
 .nav-links a:hover {
     color: var(--color-primary);
+    text-shadow: 0 0 5px var(--color-primary); /* Melhoria: Efeito Neon Subtil */
 }
 .btn-contact {
     background: var(--color-primary);
@@ -76,6 +78,7 @@ a {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2); /* Melhoria: Efeito Glow */
 }
 .btn-contact:hover {
     background-color: var(--color-secondary);
@@ -100,6 +103,7 @@ a {
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2); /* Melhoria: Efeito Glow */
 }
 
 .btn-primary:hover {
@@ -375,4 +379,39 @@ footer {
     .hero-content h1 {
         font-size: 2.5rem;
     }
+}
+
+/* ========================================================================
+ * 4. Utilidades & Toast (Melhoria: Novo componente)
+ * ======================================================================== */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-dark-bg);
+    color: var(--color-light-text);
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 255, 255, 0.3); /* Efeito Neon Glow */
+    z-index: 5000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    max-width: 90vw; 
+}
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+.toast.error {
+    box-shadow: 0 0 15px var(--color-error); /* Glow Vermelho para erro */
+    border-left: 5px solid var(--color-error);
+}
+.toast strong {
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 5px;
+}
+.toast.error strong {
+    color: var(--color-error);
 }
