@@ -472,6 +472,30 @@ footer {
     border-top: 1px solid #E5E7EB;
 }
 
+/* NOVO: Estilos para Redes Sociais */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px; /* Espaço entre links sociais e copyright */
+    padding-top: 10px;
+}
+
+.social-icon {
+    font-size: 1.8rem;
+    color: var(--color-dark-bg); /* Cor inicial mais escura */
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Para o efeito de transform */
+}
+
+.social-icon:hover {
+    color: var(--color-primary); /* Efeito neon ao passar o rato */
+    transform: scale(1.1) translateY(-2px);
+    text-shadow: 0 0 8px var(--color-primary);
+}
+/* Fim dos Estilos para Redes Sociais */
+
+
 /* Media Queries (Gerais) */
 @media (max-width: 992px) {
     .contact-grid, .about-grid {
