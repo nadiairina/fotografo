@@ -304,7 +304,7 @@ section {
 }
 
 /* NOVO: Estilo para o Título do Serviço (Atualizado: Tamanho maior e cor Ciano) */
-.service-card h2 {
+.service-card h4 { /* <-- CORRIGIDO DE H2 PARA H4 */
     font-size: 1.6rem; /* Aumenta o tamanho do título do serviço */
     font-weight: 700; /* Aumenta a espessura para destaque */
     color: var(--color-primary); /* Aplica a cor ciano */
@@ -532,7 +532,7 @@ footer {
         font-size: 1rem;
     }
     /* NOVO: Ajuste do Título do Serviço em Mobile */
-    .service-card h2 {
+    .service-card h4 { /* <-- CORRIGIDO DE H2 PARA H4 */
         font-size: 1.2rem;
         /* A cor será herdada do estilo geral, mas mantemos o tamanho menor para mobile */
     }
